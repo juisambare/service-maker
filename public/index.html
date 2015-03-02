@@ -1,0 +1,81 @@
+<html ng-app>
+<head>
+	<title> The mean stack</title>
+	<link href= "css/bootstrap.css" rel= "stylesheet"/>
+	<script src = "js/angular.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>-->
+	<script src = "features/services/controller.js"></script>
+	
+<style>
+            .odd {
+                background-color: FFFF99;
+            }
+            .even {
+                background-color: 00FF99;
+            }
+            table{
+                border: 1px solid #ccc;
+                background-color: #ccc;
+                height : 500px;
+            }
+            body{
+            	 background-image: url("sti4.jpg");
+            }
+            .main{
+                margin: 10px auto;
+                width:350px;
+                border: 1px solid #ccc;
+                padding: 20px;	
+            }
+        </style>
+</head>
+<body>
+	<div>
+		<img src = "sti1.jpg" height = "300" width = "300">
+	</div>
+	<div class = "container" ng-controller="ServiceCtrl" style = "vertical-align: middle;">
+		<!--{{message}}-->
+		<marquee behavior = "alternate">
+			<font color = "yellow" face = "papyrus" size  = "30px">Welcome to my </font>
+			<font color = "red" face = "papyrus" size  = "30px">S</font>
+			<font color = "white" face = "papyrus" size  = "30px">t</font>
+			<font color = "red" face = "papyrus" size  = "30px">i</font>
+			<font color = "white" face = "papyrus" size  = "30px">c</font>
+			<font color = "red" face = "papyrus" size  = "30px">k</font>
+			<font color = "white" face = "papyrus" size  = "30px">y</font>
+			<font color = "yellow" face = "papyrus" size  = "30px"> notes..!!!</font>
+		</marquee>
+		
+		<table class="table" bgcolor="#ccc">
+			<thead>
+				<tr>
+					<th><font size = "5px">Sticky Notes of the day</font></th>
+					<th>&nbsp;</th>
+				</tr>
+				<tr>
+					<td>
+						<input class = "form-control" ng-model = "serviceClient.name"/>
+					</td>
+					<td>
+						<button class= "btn btn-primary" ng-click = "create()">Add a new </button>
+						<!--<button class= "btn btn-primary" ng-click = "update()">Update</button>-->
+					</td>
+				</tr>
+			</thead>
+			<tbody >
+				<tr ng-repeat="serviceClient in serviceClients" ng-class-odd="'odd'" ng-class-even="'even'">
+					<td>
+						<font color= "red">
+						{{serviceClient.name}}
+					</font>
+					</td>
+					<td>
+					<button class= "btn btn-danger" ng-click = "remove(serviceClient._id)">Remove</button>	
+					<!--<button class= "btn btn-warning" ng-click = "select(serviceClient._id)">Select</button>-->
+					</td>
+				</tbody>
+			</table>
+		
+	</div>
+</body>
+</html>
